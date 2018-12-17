@@ -1,0 +1,25 @@
+version: '3'
+services:
+  tomcat:
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1G"
+    container_name: xxxx
+    restart: always
+    privileged: true
+    network_mode: host
+    image: kbqallan/tomcat:1.8.0
+    ports:
+    - 8080:8080
+    - 8009:8009
+    environment:
+    - TERM=linux
+    - TOMCAT_PASS=GVCphJmE0GW7
+    - JAVA_OPTS=-Duser.timezone=Asia/Shanghai
+    volumes:
+    - /etc/localtime:/etc/localtime:ro
+    - /data/tomcat/xxx.properties:/etc/xxx.properties
+    - /data/tomcat/xxxx:/opt/tomcat/webapps/xxxx
+    - /data/tomcat/logs:/opt/tomcat/logs
+
